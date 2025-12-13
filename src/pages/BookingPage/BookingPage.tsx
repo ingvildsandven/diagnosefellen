@@ -1,5 +1,11 @@
+import BookingForm from "../../components/BookingForm/BookingForm";
+
+
 function BookingPage(){
     return(
-        <div>Du kan ikke booke meg her enda</div>
+        <main>
+             <BookingForm/>
+        </main>
+        
     );
 } export default BookingPage;

@@ -1,12 +1,13 @@
 /* Navbar.module.css */
-body{
-    margin-top: 70px;
+body {
+  margin-top: 80px;
 }
 
 .nav {
   background-color: var(--box-background);
   position: fixed;
   width: 100%;
+  left: 0;
   top: 0;
   z-index: 50;
 }
@@ -28,13 +29,14 @@ body{
 }
 
 .navLink {
-  color: var(--header-color);
+  color: var(--muted-font-color);
   font-weight: 500;
   text-decoration: none;
   padding: 5px;
   transition: color 0.2s ease;
   display: inline-block;
   position: relative;
+  text-transform: uppercase;
 }
 
 .navLink::after {
@@ -143,7 +145,7 @@ body{
 .sidebarLink {
   display: block;
   padding: 0.75rem 1rem;
-  color: var(--header-color);
+  color: var(--muted-font-color);
   font-weight: 500;
   text-decoration: none;
   border-radius: 0.5rem;
@@ -157,10 +159,9 @@ body{
 
 /* Tablet and Mobile */
 @media (max-width: 767px) {
-body{
-    margin-top: 0px;
-}
-
+  body {
+    margin-top: 10px;
+  }
 
   .nav {
     display: none;
