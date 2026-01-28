@@ -1,0 +1,17 @@
+.kicker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 80vw;
+  text-transform: uppercase;
+  color: var(--muted-font-color);
+}
+
+.kickerDot {
+  width: 9px;
+  height: 9px;
+  margin: 15px;
+  border-radius: 999px;
+  background: var(--main-color);
+  box-shadow: 0 0 0 6px rgba(225, 29, 72, 0.12);
+}

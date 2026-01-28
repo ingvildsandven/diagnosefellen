@@ -2,20 +2,56 @@
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  --font-highlight-color: #8f0202;
+
   --main-color: #b80f0f;
+  --main-muted-color: #8f0202;
+
   --light-main: #ffefef;
   --background-color: #f3f4f6;
   --box-background: #faf6f6;
-  --muted-font-color: #475569;
+
   --font-color: #282828;
+  --muted-font-color: #475569;
 }
 
+@font-face {
+  font-family: "fluent_calibri";
+  src: url(./assets/fonts/Fluent_Calibri.ttf);
+}
+
+@font-face {
+  font-family: "fluent_calibri_bold";
+  src: url(./assets/fonts/Fluent_Calibri-Bold.ttf);
+}
+
+@font-face {
+  font-family: "fluent_sitka";
+  src: url(./assets/fonts/Fluent_SitkaSmall.ttf);
+}
+
+@font-face {
+  font-family: "fluent_sitka_bold";
+  src: url(./assets/fonts/Fluent_SitkaSmall-Bold.ttf);
+}
+
+@font-face {
+  font-family: "montserrat";
+  src: url(./assets/fonts/Montserrat-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "montserrat_italic";
+  src: url(./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf);
+}
 
 body {
   background-color: var(--background-color) !important;
   color: var(--font-color);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 1px;
   margin: 0;
 }
 
+h1 {
+  font-family: fluent_sitka;
+}

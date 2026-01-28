@@ -14,8 +14,6 @@ function Layout() {
   );
 }
 
-        //<Route path="/project/:id" element={<ProjectPage />} />
-        //<Route path="/experience/:id" element={<ExperiencePage />} />
 function App() {
   return (
     <Routes>
