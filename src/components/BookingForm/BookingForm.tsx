@@ -100,7 +100,7 @@ export default function BookingForm({ onSubmit }: any) {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       <section className={styles.input_container}>
-        <article className={styles.field}>
+        <article className={styles.input_field_article }>
           <label className={styles.label} htmlFor="email">
             Email
           </label>
@@ -123,7 +123,7 @@ export default function BookingForm({ onSubmit }: any) {
           )}
         </article>
 
-        <article className={styles.field}>
+        <article className={styles.input_field_article }>
           <label className={styles.label} htmlFor="eventType">
             Arrangement
           </label>
@@ -147,7 +147,7 @@ export default function BookingForm({ onSubmit }: any) {
           </div>
         </article>
 
-        <article className={styles.field}>
+        <article className={styles.input_field_article }>
           <label className={styles.label} htmlFor="date">
             Foretrukket dato
           </label>
@@ -169,8 +169,8 @@ export default function BookingForm({ onSubmit }: any) {
         </article>
       </section>
 
-      <section>
-        <article className={`${styles.field} ${styles.fieldFull}`}>
+      <section className={styles.message_container}>
+        <article className={`${styles.message_field_article} ${styles.fieldFull}`}>
           <label className={styles.label} htmlFor="content">
             Melding
           </label>

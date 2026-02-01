@@ -9,12 +9,11 @@
   --radius: 16px;
 }
 
-  .form{
-    width: 100%;
-  }
+.form {
+  width: 100%;
+}
 
-/*Input fields*/
-
+/*Input containers*/
 
 .input_container {
   display: flex;
@@ -23,24 +22,41 @@
   gap: 20px;
 }
 
-.label {
+.message_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
-.field {
+.input_field_article {
   display: flex;
   flex-direction: column;
   width: 20vw;
   min-width: 250px;
 }
 
+.message_field_article {
+  width: 65vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-block: 10px;
+}
+
+/*Input fields*/
+
 .input,
-.select,
-.textarea {
+.select {
   display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 12px 14px;
   background: #fff;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .select {
@@ -63,32 +79,17 @@
 }
 
 .textarea {
-  width: 100%;
-  min-width: 75vw;
-  resize: vertical;
-}
-
-/*
-.input,
-.select,
-.textarea {
-  width: 100%;
+  display: block;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 12px 14px;
-  font-size: 1rem;
-  color: var(--text);
   background: #fff;
-  outline: none;
-  transition: border-color 140ms ease, box-shadow 140ms ease,
-    transform 140ms ease;
+  resize: vertical;
+  width: calc(100% - 30px);
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.textarea {
-  min-width: 75vw;
-  resize: vertical;
-  min-height: 100px;
-}*/
+/*Error colors*/
 
 .input:focus,
 .select:focus,
@@ -110,16 +111,19 @@
 .error {
   font-size: 12px;
   color: var(--red);
+  margin-top: 5px;
 }
+
+/*Bottom part*/
 
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding-top: 6px;
+  margin-block: 10px;
 }
 
 .button {
@@ -130,10 +134,12 @@
     rgba(190, 18, 60, 0.98)
   );
   color: #fff;
+  width: 200px;
   border-radius: 999px;
   padding: 10px 16px;
-  font-weight: 700;
   font-size: 14px;
+  font-weight: 600;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
   transition:
     transform 120ms ease,
@@ -170,15 +176,18 @@
 }
 
 @media screen and (max-width: 820px) {
-
   .input_container {
     flex-direction: column;
     width: 100%;
     align-items: center;
   }
 
-  .field {
+  .input_field_article,
+  .message_field_article {
     width: 90vw;
-    min-width: 500px;
+  }
+
+  .label {
+    margin-block: 5px;
   }
 }
