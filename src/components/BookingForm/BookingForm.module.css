@@ -1,7 +1,6 @@
 :root {
   --bg: #ffffff;
   --text: #0f172a; /* slate-900 */
-  --line: #e2e8f0; /* slate-200 */
   --soft: #f8fafc; /* slate-50 */
   --red: #e11d48; /* rose-600 */
   --redSoft: rgba(225, 29, 72, 0.12);

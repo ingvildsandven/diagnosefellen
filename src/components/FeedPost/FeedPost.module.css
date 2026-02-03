@@ -1,0 +1,26 @@
+
+.article * {
+    text-decoration: none;
+    color: var(--font-color);
+    margin: 0px;
+}
+
+.article{
+    margin-block: 20px;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    padding: 15px;
+    width: calc(90vw - 30px);
+}
+
+.article h2{
+    margin-block: 20px;
+}
+
+.tag_container{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
