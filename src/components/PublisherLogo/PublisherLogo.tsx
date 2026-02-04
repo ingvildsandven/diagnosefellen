@@ -1,16 +1,17 @@
-import style from "./PublisherLogo.module.css"
+import style from "./PublisherLogo.module.css";
 
 type PublisherInfo = {
-    logo: string,
-    title: string,
+  logo: string;
+  title: string;
+  subscription: boolean;
+};
+
+function PublisherLogo({ logo, title, subscription }: PublisherInfo) {
+  return (
+    <div className={style.publisher_container}>
+      <img src={logo} alt={"Logoen til " + title} />
+      {subscription ? <p>+</p> : ""}
+    </div>
+  );
 }
-
-function PublisherLogo({ logo, title }: PublisherInfo){
-
-    return(
-        <div>
-            <img src={logo} alt={"Logoen til" + logo} />
-            <p>{title}</p>
-        </div>
-    )
-} export default PublisherLogo;
+export default PublisherLogo;

@@ -9,10 +9,42 @@
     "date": "07.02.2025",
     "subscription": true,
     "publisher": {
-      "logo": "",
+      "logo": "/logos/aftenposten.svg",
       "title": "A-magasinet",
       "journalists": ["Bjørn Egil Halvorsen"]
     },
     "link": "https://www.aftenposten.no/amagasinet/i/vgGeA5/psykiater-henriette-k-sandven-ut-mot-adhd-diagnoser"
+  } ,
+   {
+    "title": "Ungdomskriminalitet starter på mobilen",
+    "description": "Ungdomskriminaliteten øker, og alderen på gjerningspersonene synker dramatisk. Rekrutteringen skjer på sosiale medier.",
+    "type": "Kronikk",
+    "images": [
+      { "image": "", "photographer": "", "alt": "Bilde av Henriette Sandven" }
+    ],
+    "date": "02.10.2025",
+    "subscription": true,
+    "publisher": {
+      "logo": "/logos/vg.png",
+      "title": "A-magasinet",
+      "journalists": []
+    },
+    "link": "https://www.vg.no/nyheter/i/0VPm8E/ungdomskriminalitet-starter-paa-mobilen"
+  },
+   {
+    "title": "Barnepsykiater: –⁠ Vi diagnostiserer barn som ikke er syke",
+    "description": "Barnepsykiater Henriette Kirkaune Sandven mener ADHD overdiagnostiseres blant barn.",
+    "type": "Artikkel",
+    "images": [
+      { "image": "https://akamai.vgc.no/v2/images/9a408a1f-5cab-4060-956b-d27a17157d27?format=auto&w=1080&s=7096e25263fdb03d0587091203394b4777905b8b", "photographer": "Gorm Kallestad", "alt": "Bilde av barn som løper" }
+    ],
+    "date": "06.02.2025",
+    "subscription": true,
+    "publisher": {
+      "logo": "/logos/vg.png",
+      "title": "VG",
+      "journalists": ["Aslaug Tangvald-Pedersen"]
+    },
+    "link": "https://www.vg.no/helse/i/vgG8qX/psykiater-henriette-kirkaune-sandven-adhd-overdiagnostiseres"
   }
 ]

@@ -1,0 +1,24 @@
+.publisher_container{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.publisher_container img{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.publisher_container p{
+    background-color: var(--main-muted-color);
+    color: var(--background-color);
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-weight: 500;
+    border-radius: 15px;
+    transform: translate(-17px, 35px);
+}

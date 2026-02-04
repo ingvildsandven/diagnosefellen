@@ -13,8 +13,10 @@ function PostPage() {
       </select>
 
       <section className={style.article_container}>
+        <FeedPost post={post[2]} />
         <FeedPost post={post[0]} />
-        <FeedPost post={post[0]} />
+        <FeedPost post={post[1]} />
+        
       </section>
     </main>
   );
