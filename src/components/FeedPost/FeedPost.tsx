@@ -24,8 +24,8 @@ type Post = {
 
 function FeedPost({ post }: { post: Post }) {
   return (
-    <article className={style.article}>
-      <a href={post.link} target="_blank">
+    <a href={post.link} target="_blank" className={style.link}>
+      <article className={style.article}>
         {post.images[0].image ? (
           <img
             src={post.images[0].image}
@@ -45,16 +45,19 @@ function FeedPost({ post }: { post: Post }) {
           subscription={post.subscription}
         />
         <div className={style.content_container}>
-        {post.images[0].image ? (<h2>{post.title}</h2>): (<h2 className={style.padding_side}>{post.title}</h2>)}
-        <p>{post.description}..</p>
+          {post.images[0].image ? (
+            <h2>{post.title}</h2>
+          ) : (
+            <h2 className={style.padding_side}>{post.title}</h2>
+          )}
+          <p>{post.description}..</p>
         </div>
-
-        <div className={style.continue_container}>
-          <p>Fortsett å lese</p>
-          <span className={style.arrow_icon}></span>
-        </div>
-      </a>
-    </article>
+      </article>
+      <div className={style.continue_container}>
+        <p>Fortsett å lese</p>
+        <span className={style.arrow_icon}></span>
+      </div>
+    </a>
   );
 }
 export default FeedPost;
