@@ -11,7 +11,7 @@
 .article {
   margin-top: 20px;
   border: 1px solid var(--line);
-  border-radius: 15px;
+  border-radius: 15px 15px 3px 3px;
   width: calc(90vw - 30px);
   max-width: 800px;
   position: relative;
@@ -64,7 +64,7 @@
   left: 0px;
   bottom: -5px;
   border-radius: 0px 0px 10px 10px;
-  transform: translateY(-50px);
+  transform: translateY(-48px);
   transition: transform 0.2s ease-in;
   position: relative;
   z-index: -1;
