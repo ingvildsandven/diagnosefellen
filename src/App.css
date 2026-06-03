@@ -7,7 +7,7 @@
   --main-muted-color: #8f0202;
 
   --light-main: #ffefef;
-  --background-color: #f3f4f6;
+  --background-color: #ffffff;
   --box-background: #faf6f6;
 
   --font-color: #282828;
@@ -45,6 +45,7 @@
   font-family: "montserrat_italic";
   src: url(./assets/fonts/Montserrat-Italic-VariableFont_wght.ttf);
 }
+
 
 body {
   background-color: var(--background-color) !important;
