@@ -40,7 +40,7 @@ function HomePage() {
   useEffect(() => {
     (async () => {
       try {
-        let { data: posts, error } = await supabase.from("posts").select("*");
+        const { data: posts, error } = await supabase.from("posts").select("*");
         console.log(posts, error);
       } catch (error) {
         console.error("Error fetching data:", error);

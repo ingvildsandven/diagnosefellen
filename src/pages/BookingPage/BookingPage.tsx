@@ -3,6 +3,7 @@ import Kicker from "./components/Kicker/Kicker";
 import style from "./BookingPage.module.css";
 import BottomNote from "./components/BottomNote/BottomNote";
 import supabase from "../../api/supabase/client";
+import type { BookingPayload } from "../../types/booking.types";
 
 function BookingPage() {
   return (
@@ -16,7 +17,7 @@ function BookingPage() {
       </section>
 
       <BookingForm
-        onSubmit={async (payload: any) => {
+        onSubmit={async (payload: BookingPayload) => {
           const { error } = await supabase.functions.invoke(
             "send-booking-email",
             {

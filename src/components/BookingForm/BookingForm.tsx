@@ -1,12 +1,6 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import styles from "./BookingForm.module.css";
-
-const EVENT_TYPES = [
-  { value: "public_speaking", label: "Foredrag" },
-  { value: "podcast", label: "Podcast" },
-  { value: "interview", label: "Intervju" },
-  { value: "other", label: "Annet (spesifiser under)" },
-];
+import { EVENT_TYPES, type BookingFormProps, type BookingPayload, type EventType, type FormErrors } from "../../types/booking.types";
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
@@ -17,9 +11,9 @@ function formatDateForMin(d = new Date()) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-export default function BookingForm({ onSubmit }: any) {
+export default function BookingForm({ onSubmit }: BookingFormProps) {
   const [email, setEmail] = useState("");
-  const [eventType, setEventType] = useState(EVENT_TYPES[0].value);
+  const [eventType, setEventType] = useState<EventType>(EVENT_TYPES[0].value);
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
   const [status, setStatus] = useState({ type: "idle", message: "" });
@@ -32,7 +26,7 @@ export default function BookingForm({ onSubmit }: any) {
   const minDate = useMemo(() => formatDateForMin(new Date()), []);
 
   const errors = useMemo(() => {
-    const e: any = {};
+    const e: FormErrors = {};
 
     if (!email.trim()) e.email = "Mailadresse er påkrevd";
     else if (!isValidEmail(email)) e.email = "Skriv inn en gyldig mailadresse.";
@@ -49,7 +43,7 @@ export default function BookingForm({ onSubmit }: any) {
 
   const isFormValid = Object.keys(errors).length === 0;
 
-  async function handleSubmit(e: any) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setTouched({ email: true, date: true, content: true });
 
@@ -58,7 +52,7 @@ export default function BookingForm({ onSubmit }: any) {
       return;
     }
 
-    const payload = {
+    const payload: BookingPayload = {
       email: email.trim(),
       eventType,
       date,
@@ -134,7 +128,7 @@ export default function BookingForm({ onSubmit }: any) {
               id="eventType"
               name="eventType"
               value={eventType}
-              onChange={(e) => setEventType(e.target.value)}
+              onChange={(e) => setEventType(e.target.value as EventType)}
               className={styles.select}
             >
               {EVENT_TYPES.map((opt) => (
