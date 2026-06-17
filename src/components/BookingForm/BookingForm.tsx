@@ -66,6 +66,8 @@ export default function BookingForm({ onSubmit }: any) {
       createdAt: new Date().toISOString(),
     };
 
+    console.log(payload)
+
     try {
       setStatus({ type: "loading", message: "Sender inn..." });
 
