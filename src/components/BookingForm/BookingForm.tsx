@@ -1,34 +1,32 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type FormEvent } from "react";
 import styles from "./BookingForm.module.css";
-
-const EVENT_TYPES = [
-  { value: "public_speaking", label: "Foredrag" },
-  { value: "podcast", label: "Podcast" },
-  { value: "interview", label: "Intervju" },
-  { value: "other", label: "Annet (spesifiser under)" },
-];
+import { EVENT_TYPES, type BookingFormProps, type BookingPayload, type EventType, type FormErrors } from "../../types/booking.types";
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim());
 }
 
 function formatDateForMin(d = new Date()) {
-  const pad = (n:number) => String(n).padStart(2, "0");
+  const pad = (n: number) => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-export default function BookingForm({ onSubmit }:any) {
+export default function BookingForm({ onSubmit }: BookingFormProps) {
   const [email, setEmail] = useState("");
-  const [eventType, setEventType] = useState(EVENT_TYPES[0].value);
+  const [eventType, setEventType] = useState<EventType>(EVENT_TYPES[0].value);
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
   const [status, setStatus] = useState({ type: "idle", message: "" });
-  const [touched, setTouched] = useState({ email: false, date: false, content: false });
+  const [touched, setTouched] = useState({
+    email: false,
+    date: false,
+    content: false,
+  });
 
   const minDate = useMemo(() => formatDateForMin(new Date()), []);
 
   const errors = useMemo(() => {
-    const e:any = {};
+    const e: FormErrors = {};
 
     if (!email.trim()) e.email = "Mailadresse er påkrevd";
     else if (!isValidEmail(email)) e.email = "Skriv inn en gyldig mailadresse.";
@@ -36,7 +34,8 @@ export default function BookingForm({ onSubmit }:any) {
     if (!date) e.date = "Velg en dato.";
 
     if (!content.trim()) e.content = "Legg til en kort melding.";
-    else if (content.trim().length < 10) e.content = "Legg til flere detaljer (minst 10 tegn)";
+    else if (content.trim().length < 10)
+      e.content = "Legg til flere detaljer (minst 10 tegn)";
     else if (content.trim().length > 1000) e.content = "Maks 1000 tegn";
 
     return e;
@@ -44,7 +43,7 @@ export default function BookingForm({ onSubmit }:any) {
 
   const isFormValid = Object.keys(errors).length === 0;
 
-  async function handleSubmit(e:any) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setTouched({ email: true, date: true, content: true });
 
@@ -53,13 +52,15 @@ export default function BookingForm({ onSubmit }:any) {
       return;
     }
 
-    const payload = {
+    const payload: BookingPayload = {
       email: email.trim(),
       eventType,
       date,
       content: content.trim(),
       createdAt: new Date().toISOString(),
     };
+
+    console.log(payload)
 
     try {
       setStatus({ type: "loading", message: "Sender inn..." });
@@ -71,7 +72,10 @@ export default function BookingForm({ onSubmit }:any) {
         await new Promise((r) => setTimeout(r, 450));
       }
 
-      setStatus({ type: "success", message: "Takk! Din forespørsel har blitt sendt." });
+      setStatus({
+        type: "success",
+        message: "Takk! Din forespørsel har blitt sendt.",
+      });
       setEmail("");
       setEventType(EVENT_TYPES[0].value);
       setDate("");
@@ -90,153 +94,126 @@ export default function BookingForm({ onSubmit }:any) {
   const contentInvalid = touched.content && !!errors.content;
 
   return (
-    <section className={styles.booking_form} aria-label="Booking request form">
-     
-        <section className={styles.header}>
-          <article className={styles.kicker}>
-            <span className={styles.kickerDot} aria-hidden="true" />
-            Bookingforespørsel
-          </article>
-          <h2 className={styles.title}>Henvendelse om booking</h2>
-          <p className={styles.subtitle}>
-            Kontakt meg her, så svarer jeg fortløpende.
-          </p>
-        </section>
-
-        <form className={styles.form} onSubmit={handleSubmit} noValidate>
-          <section className={styles.input_container}>
-            <article className={styles.field}>
-              <label className={styles.label} htmlFor="email">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                inputMode="email"
-                autoComplete="email"
-                placeholder="deg@selskap.no"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={() => setTouched((t) => ({ ...t, email: true }))}
-                aria-invalid={emailInvalid}
-                aria-describedby={emailInvalid ? "email-error" : undefined}
-                className={`${styles.input} ${emailInvalid ? styles.inputInvalid : ""}`}
-                required
-              />
-              {emailInvalid && (
-                <div className={styles.error} id="email-error" role="alert">
-                  {errors.email}
-                </div>
-              )}
-            </article>
-
-            <article className={styles.field}>
-              <label className={styles.label} htmlFor="eventType">
-                Arrangement
-              </label>
-              <div className={styles.selectWrap}>
-                <select
-                  id="eventType"
-                  name="eventType"
-                  value={eventType}
-                  onChange={(e) => setEventType(e.target.value)}
-                  className={styles.select}
-                >
-                  {EVENT_TYPES.map((opt) => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-                <span className={styles.pulldown_btn} aria-hidden="true">▾</span>
-              </div>
-            </article>
-
-            <article className={styles.field}>
-              <label className={styles.label} htmlFor="date">
-                Foretrukket dato
-              </label>
-              <input
-                id="date"
-                name="date"
-                type="date"
-                min={minDate}
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                onBlur={() => setTouched((t) => ({ ...t, date: true }))}
-                aria-invalid={dateInvalid}
-                aria-describedby={dateInvalid ? "date-error" : undefined}
-                className={`${styles.input} ${dateInvalid ? styles.inputInvalid : ""}`}
-                required
-              />
-              {dateInvalid && (
-                <div className={styles.error} id="date-error" role="alert">
-                  {errors.date}
-                </div>
-              )}
-            </article>
-            </section>
-
-            <section>
-            <article className={`${styles.field} ${styles.fieldFull}`}>
-              <label className={styles.label} htmlFor="content">
-                Melding
-              </label>
-              <textarea
-                id="content"
-                name="content"
-                rows={6}
-                placeholder="Skriv hva du ønsker (tema, tid, målgruppe, linker osv.)"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                onBlur={() => setTouched((t) => ({ ...t, content: true }))}
-                aria-invalid={contentInvalid}
-                aria-describedby={contentInvalid ? "content-error" : "content-help"}
-                className={`${styles.textarea} ${contentInvalid ? styles.inputInvalid : ""}`}
-                required
-              />
-              {!contentInvalid ? (
-                <div className={styles.help} id="content-help">
-                  Hold det kort - inkluder kun viktige detaljer.
-                </div>
-              ) : (
-                <div className={styles.error} id="content-error" role="alert">
-                  {errors.content}
-                </div>
-              )}
-            </article>
-          </section>
-
-          <section className={styles.footer}>
-            <button
-              type="submit"
-              className={styles.button}
-              disabled={status.type === "loading"}
-            >
-              {status.type === "loading" ? "Laster..." : "Send forespørsel"}
-            </button>
-
-            <div
-              className={`${styles.status} ${
-                status.type === "success"
-                  ? styles.statusSuccess
-                  : status.type === "error"
-                    ? styles.statusError
-                    : ""
-              }`}
-              aria-live="polite"
-            >
-              {status.message}
+    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+      <section className={styles.input_container}>
+        <article className={styles.input_field_article }>
+          <label className={styles.label} htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            placeholder="deg@selskap.no"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onBlur={() => setTouched((t) => ({ ...t, email: true }))}
+            className={`${styles.input} ${emailInvalid ? styles.inputInvalid : ""}`}
+            required
+          />
+          {emailInvalid && (
+            <div className={styles.error} id="email-error" role="alert">
+              {errors.email}
             </div>
-          </section>
-        </form>
+          )}
+        </article>
 
-        <div className={styles.note}>
-          <span className={styles.noteDot} aria-hidden="true" />
-          <span>Forespørselen besvares på din mail.</span>
+        <article className={styles.input_field_article }>
+          <label className={styles.label} htmlFor="eventType">
+            Arrangement
+          </label>
+          <div className={styles.selectWrap}>
+            <select
+              id="eventType"
+              name="eventType"
+              value={eventType}
+              onChange={(e) => setEventType(e.target.value as EventType)}
+              className={styles.select}
+            >
+              {EVENT_TYPES.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+            <span className={styles.pulldown_btn} aria-hidden="true">
+              ▾
+            </span>
+          </div>
+        </article>
+
+        <article className={styles.input_field_article }>
+          <label className={styles.label} htmlFor="date">
+            Foretrukket dato
+          </label>
+          <input
+            id="date"
+            name="date"
+            type="date"
+            min={minDate}
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            onBlur={() => setTouched((t) => ({ ...t, date: true }))}
+            className={`${styles.input} ${dateInvalid ? styles.inputInvalid : ""}`}
+          />
+          {dateInvalid && (
+            <div className={styles.error} id="date-error" role="alert">
+              {errors.date}
+            </div>
+          )}
+        </article>
+      </section>
+
+      <section className={styles.message_container}>
+        <article className={`${styles.message_field_article} ${styles.fieldFull}`}>
+          <label className={styles.label} htmlFor="content">
+            Melding
+          </label>
+          <textarea
+            id="content"
+            name="content"
+            rows={6}
+            placeholder="Skriv hva du ønsker (tema, tid, målgruppe, linker osv.)"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onBlur={() => setTouched((t) => ({ ...t, content: true }))}
+            className={`${styles.textarea} ${contentInvalid ? styles.inputInvalid : ""}`}
+            required
+          />
+          {!contentInvalid ? (
+            <div className={styles.help} id="content-help">
+              Hold det kort - inkluder kun viktige detaljer.
+            </div>
+          ) : (
+            <div className={styles.error} id="content-error" role="alert">
+              {errors.content}
+            </div>
+          )}
+        </article>
+      </section>
+
+      <section className={styles.footer}>
+        <button
+          type="submit"
+          className={styles.button}
+          disabled={status.type === "loading"}
+        >
+          {status.type === "loading" ? "Laster..." : "Send forespørsel"}
+        </button>
+
+        <div
+          className={`${styles.status} ${
+            status.type === "success"
+              ? styles.statusSuccess
+              : status.type === "error"
+                ? styles.statusError
+                : ""
+          }`}
+        >
+          {status.message}
         </div>
-    </section>
+      </section>
+    </form>
   );
 }
-

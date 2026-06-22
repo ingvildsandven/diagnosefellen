@@ -1,0 +1,18 @@
+.note {
+  width: 80vw;
+  margin-block: 20px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--font-color);
+  font-size: 12px;
+}
+
+.noteDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--main-color);
+  margin: 10px;
+}

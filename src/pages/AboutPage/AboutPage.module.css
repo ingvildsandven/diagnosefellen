@@ -1,0 +1,52 @@
+.accordion_section, .about_section{
+    margin: 0 auto;
+}
+
+.about_section{
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    display: flex;
+    padding: 20px;
+    width: 90%;
+}
+
+.about_section .paragraph_article{
+    display: flex;
+    flex-direction: column;
+    border-left: 1.5px solid var(--main-color);
+    margin-inline: 20px;
+}
+
+
+.about_section p{
+    text-align: left;
+    padding-left: 20px;
+}
+
+.accordion_section{
+    width: 93%;
+    margin-block: 20px;
+}
+
+.image{
+    max-width: 40vw;
+    border-radius: 15px;
+}
+
+@media (min-width: 750px){
+    h1{
+        padding-top:20px;
+    }
+}
+
+
+@media screen and (max-width: 750px){
+    .about_section{
+        flex-direction: column;
+    }
+
+    .image{
+        max-width: 90%;
+    }
+
+}

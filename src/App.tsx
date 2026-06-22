@@ -5,23 +5,24 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import Navbar from "./components/Navbar/Navbar";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import PostPage from "./pages/PostPage/PostPage";
+import Footer from "./components/Footer/Footer";
 
 function Layout() {
   return (
     <>
-      <Navbar /> <Outlet />
+      <Navbar /> <Outlet /> <Footer/>
     </>
   );
 }
 
-        //<Route path="/project/:id" element={<ProjectPage />} />
-        //<Route path="/experience/:id" element={<ExperiencePage />} />
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/about/" element={<AboutPage />} />
+        <Route path="/posts/" element={<PostPage />} />
         <Route path="/admin/" element={<AdminPage />} />
         <Route path="/booking/" element={<BookingPage />} />
       </Route>

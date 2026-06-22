@@ -1,75 +1,74 @@
-# React + TypeScript + Vite
+# Diagnosefellen
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A website for **Henriette Sandven** and her book *Diagnosefellen*. The site collects and organizes relevant content—podcasts, lectures, interviews, articles, and other appearances—so it’s easy to find, share, and keep updated. It also includes a booking form to contact Henriette by email for events.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Diagnosefellen** is a content hub + booking page.
 
-## React Compiler
+Core ideas:
+- One place for everything related to Henriette’s work and *Diagnosefellen*
+- Simple navigation and clear categories (podcasts, lectures, etc.)
+- A straightforward way to request bookings (talks, panels, events)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+Planned pages:
+- **Home**: Intro + highlighted items + call-to-action for booking
+- **Booking**: Booking form + practical info (topics, formats, availability notes)
+- **About**: About Henriette + about the book
+- **Admin**: (Optional) Manage links/content if a backend is added
 
-Note: This will impact Vite dev & build performances.
 
-## Expanding the ESLint configuration
+## Running a local version
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# install dependencies
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# start dev server
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# production build
+npm run build
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# preview production build locally
+npm run preview
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Images and screenshots
+![image-diagnosefellen](/src/assets/images/book/14.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
 ```
+src/
+  api/
+  assets/
+    images/
+      book/
+      selfie/
+  components/
+    BookingForm/
+    Navbar/
+  pages/
+    AboutPage/
+    AdminPage/
+    BookingPage/
+    HomePage/
+  App.css
+  App.tsx
+  index.css
+  main.tsx
+public/
+```
+
+## Techstack
+
+
+- React (UI)
+- TypeScript (type safety)
+- Vite (build tool / dev server)
+
+I’m currently debating:
+- Firebase (auth + database + hosting-friendly)
+- Supabase (Postgres + auth + storage, SQL-first)
+

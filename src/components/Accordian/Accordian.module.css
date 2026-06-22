@@ -1,0 +1,94 @@
+.wrapper {
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  width: 100%-12px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 1.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Item ── */
+.item {
+  border-top: 1px solid #e8e8e8;
+}
+
+.item:last-child {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* ── Trigger button ── */
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.25rem 0;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  color: inherit;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid #4a6cf7;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.question {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted-font-color);
+  line-height: 1.5;
+}
+
+/* ── Chevron icon ── */
+.icon {
+  flex-shrink: 0;
+  color: var(--main-color);
+  transition: transform 0.25s ease;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Collapsible panel ── */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+  overflow: hidden;
+}
+
+.panelOpen {
+  grid-template-rows: 1fr;
+}
+
+/* Inner wrapper needed for grid animation trick */
+.panel > p {
+  overflow: hidden;
+}
+
+.answer {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #333;
+  margin: 0;
+  padding-bottom: 1.25rem;
+}
