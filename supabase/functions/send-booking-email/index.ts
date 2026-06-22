@@ -27,21 +27,25 @@ serve(async (req: Request) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Booking <onboarding@resend.dev>",
-        to: ["ingvild.sandven@gmail.com"],
+        from: "Diagnosefellen <booking@diagnosefellen.no>",
+        to: ["henriette.sandven@diagnosefellen.no"],
         reply_to: email,
         subject: `Ny bookingforespørsel: ${eventType}`,
         html: `
-          <h2>Ny bookingforespørsel</h2>
+          <h2>Du har fått en ny bookingforespørsel</h2>
           <p><strong>Fra:</strong> ${email}</p>
           <p><strong>Type:</strong> ${eventType}</p>
           <p><strong>Dato:</strong> ${date}</p>
+          <p><strong> Detaljer: </strong></p>
           <p>${content}</p>
         `,
       }),
     });
 
     const data = await res.json();
+
+    console.log("Resend status:", res.status);
+    console.log("Resend response:", JSON.stringify(data));
 
     return new Response(JSON.stringify(data), {
       status: res.status,
