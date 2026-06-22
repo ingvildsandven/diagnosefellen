@@ -34,14 +34,22 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-   
+}
+
+.diagnose_section, .book_section{
+    margin: 20px;
+}
+
+.diagnose_section p{
+    display: flex;
+    text-align: left;
+    line-height: 1.5;
 }
 
 .book_section{
     display: flex;
     flex-direction: row;
     gap: 15px;
-    margin: 20px;
 }
 
 .book_section .text_container{
