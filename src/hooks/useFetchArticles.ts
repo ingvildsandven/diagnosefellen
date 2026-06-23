@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../api/supabase/articles";
+import type { ArticleWithRelations, FetchArticleResponse, FetchArticlesOptions } from "../types/post.types";
 
-export function useFetchArticles(reloadKey: number = 0) {
-  const [data, setData] = useState();
+export function useFetchArticles({
+  page = 1,
+  pageSize = 20,
+  type,
+  publisherId,
+  sort = "newest",
+}: FetchArticlesOptions = {}) {
+  const [data, setData] = useState<FetchArticleResponse<ArticleWithRelations>>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
 
@@ -12,7 +19,13 @@ export function useFetchArticles(reloadKey: number = 0) {
       try {
         setIsLoading(true);
         setIsError(false);
-        const response = await getArticles();
+        const response = await getArticles({
+          page,
+          pageSize,
+          type,
+          publisherId,
+          sort,
+        });
         setData(response);
       } catch {
         setIsError(true);
@@ -21,6 +34,6 @@ export function useFetchArticles(reloadKey: number = 0) {
       }
     }
     APIFetch();
-  }, [reloadKey]);
+  }, [page, pageSize, type, publisherId, sort]);
   return { data, isError, isLoading };
 }
