@@ -2,6 +2,11 @@ import type { ArticleWithRelations } from "../../types/post.types";
 import PublisherLogo from "../PublisherLogo/PublisherLogo";
 import style from "./FeedPost.module.css";
 
+const formatDate = (date: string) => {
+  const [year, month, day] = date.split("-");
+  return `${day}.${month}.${year}`;
+};
+
 function FeedPost({ post }: { post: ArticleWithRelations }) {
   return (
     <a href={post.link} target="_blank" className={style.link}>
@@ -16,7 +21,7 @@ function FeedPost({ post }: { post: ArticleWithRelations }) {
           ""
         )}
 
-        <p className={style.date}>{post.date}</p>
+        <p className={style.date}>{formatDate(post.date)}</p>
         <p className={style.type}>{post.type}</p>
 
         {post.publisher ? (

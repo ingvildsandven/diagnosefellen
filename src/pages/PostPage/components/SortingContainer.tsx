@@ -1,6 +1,6 @@
 import styles from "./SortingComponent.module.css";
 import PublisherSelect from "./PublisherDropdown";
-import { ARTICLE_TYPES, type ArticleType, type Publisher } from "../../../types/post.types";
+import { ARTICLE_TYPES, type ArticleType } from "../../../types/post.types";
 import { ArrowDown, ArrowUp, ChevronDown } from "lucide-react";
 import SearchBar from "./SearchBar";
 
@@ -16,7 +16,6 @@ interface SortingContainerProps {
 }
 
 function SortingContainer({
-  filterType,
   setFilterType,
   filterPublisher,
   setFilterPublisher,
@@ -29,9 +28,11 @@ function SortingContainer({
 
   return (
     <section className={styles.sorting_section}>
+
+      {/*
       <article>
         <SearchBar value={search} onChange={setSearch} />
-      </article>
+      </article>*/}
 
       <article
         className={styles.filterBar}
