@@ -74,7 +74,7 @@ export default function BookingForm({ onSubmit }: BookingFormProps) {
 
       setStatus({
         type: "success",
-        message: "Takk! Din forespørsel har blitt sendt.",
+        message: "Takk! Din forespørsel har blitt sendt.Du får svar på mail",
       });
       setEmail("");
       setEventType(EVENT_TYPES[0].value);

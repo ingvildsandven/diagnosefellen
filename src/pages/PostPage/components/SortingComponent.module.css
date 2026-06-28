@@ -1,0 +1,110 @@
+.sorting_section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.filterBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  gap: 12px;
+  width: calc(90vw - 30px);
+  max-width: 800px;
+  flex-wrap: wrap;
+}
+
+/* ── Shared control shell ── */
+.selectWrapper,
+.sortButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  height: 44px;
+  transition: border-color 0.15s ease;
+}
+
+.selectWrapper:focus-within,
+.sortButton:focus-visible {
+  border-color: #c0392b;
+  outline: none;
+}
+
+.selectWrapper:hover,
+.sortButton:hover {
+  border-color: #9ca3af;
+}
+
+/* ── Dropdown selects ── */
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1f2937;
+  padding: 0 36px 0 12px;
+  height: 100%;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+.select:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.chevron {
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Sort toggle button ── */
+.sortButton {
+  padding: 0 14px;
+  gap: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1f2937;
+  white-space: nowrap;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  height: 44px;
+}
+
+.sortButton:focus-visible {
+  outline: 2px solid #c0392b;
+  outline-offset: 2px;
+}
+
+.sortLabel {
+  font-size: 0.88rem;
+}
+
+.sortIcon {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
+}
+
+.sortIcon svg {
+  display: block;
+}
