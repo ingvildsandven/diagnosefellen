@@ -1,5 +1,5 @@
 import styles from "./SortingComponent.module.css";
-import PublisherSelect from "./PublisherSelect";
+import PublisherSelect from "./PublisherDropdown";
 import { ARTICLE_TYPES, type ArticleType, type Publisher } from "../../../types/post.types";
 import { ArrowDown, ArrowUp, ChevronDown } from "lucide-react";
 import SearchBar from "./SearchBar";
@@ -7,8 +7,8 @@ import SearchBar from "./SearchBar";
 interface SortingContainerProps {
   filterType: ArticleType | undefined;
   setFilterType: (type: ArticleType | undefined) => void;
-  filterPublisher: Publisher | undefined;
-  setFilterPublisher: (publisher: Publisher | undefined) => void;
+  filterPublisher: string | undefined;
+  setFilterPublisher: (publisher: string | undefined) => void;
   sort: "newest" | "oldest";
   setSort: (sort: "newest" | "oldest") => void;
   search: string;
@@ -66,6 +66,7 @@ function SortingContainer({
 
         {/* Publisher filter */}
         <PublisherSelect
+          value={filterPublisher}
           onChange={setFilterPublisher}
         />
 
