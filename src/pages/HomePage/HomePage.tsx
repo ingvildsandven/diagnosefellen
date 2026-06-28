@@ -3,11 +3,7 @@ import supabase from "../../api/supabase/client";
 import style from "./HomePage.module.css";
 import { Link } from "react-router";
 import NavigationComponent from "./components/NavigationComponent";
-import {
-  Newspaper,
-  Presentation,
-  UserRound,
-} from "lucide-react";
+import { Newspaper, Presentation, UserRound } from "lucide-react";
 
 function HomePage() {
   const navLinks = [
@@ -29,7 +25,7 @@ function HomePage() {
     },
     {
       lucideLogo: UserRound,
-      header: "Om henriette",
+      header: "Om Henriette",
       link: "/about/",
       buttonText: "Les mer",
       description:
@@ -66,18 +62,39 @@ function HomePage() {
         </div>
       </section>
 
+      <section className={style.diagnose_section}>
+        <h2>Hva er diagnosefellen?</h2>
+        <p>
+          En diagnosefelle er et fenomen hvor en diagnose kan gi utilsiktede
+          konsekvenser. Dette er spesielt uheldig når det gjelder barn. Barn har
+          ofte ikke selv et språk for hva de strever med, og ber sjelden selv om
+          utredninger- til tross for at det er de som skal leve med
+          konsekvensene av å ha en diagnose. En diagnose kan bli en felle dersom
+          den settes på feil eller tynt grunnlag- eller den fører til at barnet
+          inntar en uheldig sykerolle som i verste fall fører til en dårligere
+          prognose.
+        </p>
+
+        <p>
+          I 2025 ga Henriette Kirkaune Sandven ut boka Diagnosefellen- om
+          sykeliggjøringen av norske barn.
+        </p>
+      </section>
+
       <section className={style.book_section}>
         <div className={style.text_container}>
           <h2>Om boka</h2>
-          <p className={style.description}>
-            Forekomsten av psykiske lidelser blant barn og unge har eksplodert.
-            Omtrent 1 av 5 har en diagnose. Bruken av psykiatriske legemidler
-            for barn og unge er firedoblet de siste 20 årene. I gruppen unge
-            voksne rapporterte 40 prosent av jentene og 25 prosent av guttene om
-            så store vansker at de kunne fått en psykiatrisk diagnose. Barne- og
-            ungdomspsykiater Henriette Kirkaune Sandven retter et kritisk blikk
-            på dagens samfunn og hvordan vi stadig oftere sykeliggjør barn og
-            unge.
+          <p>
+            Diagnosefellen- om sykeliggjøringen av norske barn tar for seg den
+            enorme økninger av henvisninger til barne- og ungdomspsykiatrien de
+            siste årene og hvordan dette har resultert i en stor økning i påvist
+            psykisk sykdom gjennom en psykiatrisk diagnose. Boka retter et
+            kritisk blikk på samfunnet, og reflekterer over forhold i samfunnet
+            som er med på å påvirke denne utviklingen. Den stiller spørsmål ved
+            hvorvidt vi over- og feildiagnostiserer barn, men også om vi har
+            fått et samfunn hvor stadig flere barn har det vanskelig. Hensikten
+            med boka er å påpeke at det er behov for system- og politiske
+            endringer til det beste for alle barn som vokser opp i Norge.
           </p>
 
           <p className={style.quote}>

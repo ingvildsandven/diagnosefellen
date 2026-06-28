@@ -5,6 +5,9 @@ import { useState } from "react";
 import type { ArticleType } from "../../types/post.types";
 import SortingContainer from "./components/SortingContainer";
 import SearchBar from "./components/SearchBar";
+import post from "../../api/postData.json";
+import style from "./PostPage.module.css"
+import SortingContainer from "./components/SortingContainer";
 
 function PostPage() {
   const [page, setPage] = useState<number>(1);
