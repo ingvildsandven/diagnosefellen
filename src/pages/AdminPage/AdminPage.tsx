@@ -1,6 +1,9 @@
 import styles from "./AdminPage.module.css";
 import { useFetchMetadata } from "../../hooks/useFetchMetadata";
 import { useEffect, useState, type FormEvent } from "react";
+import PublisherDropdown from "../../components/PublisherDropdown/PublisherDropdown";
+import { ARTICLE_TYPES, type ArticleType, type Publisher } from "../../types/post.types";
+import { ChevronDown } from "lucide-react";
 
 function formatDate(date: string) {
   return date?.split("T")[0] ?? "";
@@ -9,16 +12,18 @@ function formatDate(date: string) {
 function AdminPage() {
   const [url, setUrl] = useState<string>("");
   const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-      const [date, setDate] = useState("");
-      const [imgLink, setImgLink] = useState("");
+  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+  const [imgLink, setImgLink] = useState("");
+  const [type, setType] = useState<ArticleType | undefined>();
+  const [publisher, setPublisher] = useState<string>();
   const { data, isError, isLoading } = useFetchMetadata(url);
 
   useEffect(() => {
     if (data) {
       if (data.title) setTitle(data.title);
       if (data.description) setContent(data.description);
-      if(data.image) setImgLink(data.image);
+      if (data.image) setImgLink(data.image);
       if (data.publishedTime) setDate(formatDate(data.publishedTime));
     }
   }, [url]);
@@ -43,6 +48,31 @@ function AdminPage() {
         className={styles.input}
         required
       />
+
+              <PublisherDropdown onChange={setPublisher} value={publisher}/>
+
+         <select
+            className={styles.select}
+            onChange={(e) =>
+              setType(
+                e.target.value === ""
+                  ? undefined
+                  : (e.target.value as ArticleType),
+              )
+            }
+            aria-label="Filtrer etter type"
+          >
+            <option value="">Alle typer</option>
+            {ARTICLE_TYPES.map((type, idx) => (
+              <option key={idx} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+          <span className={styles.chevron}>
+            <ChevronDown />
+          </span>
+    
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <label className={styles.label} htmlFor="tittel">
@@ -71,7 +101,7 @@ function AdminPage() {
           className={styles.input}
         />
 
-                <label className={styles.label} htmlFor="image">
+        <label className={styles.label} htmlFor="image">
           Image link:
         </label>
         <input
@@ -85,19 +115,19 @@ function AdminPage() {
           required
         />
 
-         <label className={styles.label} htmlFor="content">
-            Artikkel beskrivelse
-          </label>
-          <textarea
-            id="content"
-            name="content"
-            rows={6}
-            placeholder="Intro til denne artikkelen"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className={styles.textarea} 
-            required
-          />
+        <label className={styles.label} htmlFor="content">
+          Artikkel beskrivelse
+        </label>
+        <textarea
+          id="content"
+          name="content"
+          rows={6}
+          placeholder="Intro til denne artikkelen"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className={styles.textarea}
+          required
+        />
       </form>
     </main>
   );

@@ -1,8 +1,8 @@
-import styles from "./SortingComponent.module.css";
-import PublisherSelect from "./PublisherDropdown";
+import styles from "./SortingContainer.module.css";
+import PublisherSelect from "../../../components/PublisherDropdown/PublisherDropdown";
 import { ARTICLE_TYPES, type ArticleType } from "../../../types/post.types";
 import { ArrowDown, ArrowUp, ChevronDown } from "lucide-react";
-import SearchBar from "./SearchBar";
+//import SearchBar from "./SearchBar";
 
 //This component was generated using claude.ai
 
