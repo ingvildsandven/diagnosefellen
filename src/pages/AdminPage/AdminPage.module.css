@@ -1,0 +1,20 @@
+.input,
+.select {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: #fff;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.textarea {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: #fff;
+  resize: vertical;
+  width: calc(100% - 30px);
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}

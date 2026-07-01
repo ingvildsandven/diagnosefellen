@@ -68,7 +68,6 @@ export default function BookingForm({ onSubmit }: BookingFormProps) {
       if (typeof onSubmit === "function") {
         await onSubmit(payload);
       } else {
-        // Replace this with your API call.
         await new Promise((r) => setTimeout(r, 450));
       }
 
