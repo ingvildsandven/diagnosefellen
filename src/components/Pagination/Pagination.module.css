@@ -1,0 +1,168 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.select_description{
+    margin: 0px 6px;
+}
+
+/* Page size dropdown, styled like the "Alle typer" filter pill */
+.pageSizeSelect {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #18181b;
+  background: #ffffff;
+  border: 1px solid #e2e2e6;
+  border-radius: 10px;
+  padding: 9px 32px 9px 14px;
+  cursor: pointer;
+  line-height: 1.2;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.select:hover {
+  border-color: #c9c9cf;
+}
+
+.select:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+}
+
+.chevron {
+  position: absolute;
+  right: 12px;
+  color: #6b6b70;
+  pointer-events: none;
+}
+
+/* Prev / next / page number cluster */
+.pager {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 1px solid #e2e2e6;
+  border-radius: 10px;
+  color: #18181b;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.navButton:hover:not(:disabled) {
+  border-color: #c9c9cf;
+  background: #f7f7f8;
+}
+
+.navButton:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+}
+
+.navButton:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pageList {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  background: #ffffff;
+  border: 1px solid #e2e2e6;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: #18181b;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.pageButton:hover {
+  border-color: #c9c9cf;
+  background: #f7f7f8;
+}
+
+.pageButton:focus-visible {
+  outline: 2px solid #18181b;
+  outline-offset: 2px;
+}
+
+.pageButtonActive,
+.pageButtonActive:hover {
+  border: var(--main-color) 2px solid;
+}
+
+.ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 36px;
+  color: #a0a0a6;
+  font-size: 14px;
+  user-select: none;
+}
+
+@media (max-width: 480px) {
+  .pagination {
+    justify-content: center;
+  }
+
+  .summary {
+    order: 2;
+    width: 100%;
+    text-align: center;
+  }
+}
