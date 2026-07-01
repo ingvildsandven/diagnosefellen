@@ -4,10 +4,7 @@ import { useFetchArticles } from "../../hooks/useFetchArticles";
 import { useState } from "react";
 import type { ArticleType } from "../../types/post.types";
 import SortingContainer from "./components/SortingContainer";
-import SearchBar from "./components/SearchBar";
-import post from "../../api/postData.json";
-import style from "./PostPage.module.css"
-import SortingContainer from "./components/SortingContainer";
+import Pagination from "../../components/Pagination/Pagination";
 
 function PostPage() {
   const [page, setPage] = useState<number>(1);
@@ -25,7 +22,6 @@ function PostPage() {
     sort: sort,
   });
   console.log(data, isLoading, isError);
-
 
   return (
     <main>
@@ -47,6 +43,18 @@ function PostPage() {
           <FeedPost key={article.id} post={article} />
         ))}
       </section>
+
+      {data ? (
+        <Pagination
+          page={page}
+          setPage={setPage}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+          totalItems={data.count} // or total count from your API
+        />
+      ) : (
+        ""
+      )}
     </main>
   );
 }

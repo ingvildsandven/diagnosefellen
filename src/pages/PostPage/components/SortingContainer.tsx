@@ -4,6 +4,8 @@ import { ARTICLE_TYPES, type ArticleType } from "../../../types/post.types";
 import { ArrowDown, ArrowUp, ChevronDown } from "lucide-react";
 import SearchBar from "./SearchBar";
 
+//This component was generated using claude.ai
+
 interface SortingContainerProps {
   filterType: ArticleType | undefined;
   setFilterType: (type: ArticleType | undefined) => void;
