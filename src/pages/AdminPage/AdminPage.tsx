@@ -2,57 +2,108 @@ import styles from "./AdminPage.module.css";
 import { useFetchMetadata } from "../../hooks/useFetchMetadata";
 import { useEffect, useState, type FormEvent } from "react";
 import PublisherDropdown from "../../components/PublisherDropdown/PublisherDropdown";
-import { ARTICLE_TYPES, type ArticleType, type Publisher } from "../../types/post.types";
-import { ChevronDown } from "lucide-react";
+import { ARTICLE_TYPES, type ArticleType } from "../../types/post.types";
+import ArticlesList from "./components/ArticlesList/ArticlesList";
+import { createArticle } from "../../api/supabase/articles";
+import Loader from "../../components/Loader/Loader";
+import ErrorBox from "../../components/ErrorBox/ErrorBox";
 
 function formatDate(date: string) {
   return date?.split("T")[0] ?? "";
 }
 
 function AdminPage() {
+  // Fields to update
   const [url, setUrl] = useState<string>("");
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [subscription, setSubscription] = useState<boolean>(false);
+  const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
   const [imgLink, setImgLink] = useState("");
   const [type, setType] = useState<ArticleType | undefined>();
   const [publisher, setPublisher] = useState<string>();
+
+  // Metadata
   const { data, isError, isLoading } = useFetchMetadata(url);
 
   useEffect(() => {
+    if (!data) return;
     if (data) {
       if (data.title) setTitle(data.title);
-      if (data.description) setContent(data.description);
+      if (data.description) setDescription(data.description);
       if (data.image) setImgLink(data.image);
       if (data.publishedTime) setDate(formatDate(data.publishedTime));
     }
-  }, [url]);
-  console.log("RRR", data, isError, isLoading, date);
+  }, [data]);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>): void {
-    throw new Error("Function not implemented.");
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const response = await createArticle({
+      title,
+      date,
+      link: url,
+      type,
+      subscription,
+      publisher_id: publisher,
+      description,
+    });
+
+    console.log("TODO: set check for ", response);
+    resetFields();
+  }
+
+  function resetFields() {
+    setUrl("");
+    setTitle("");
+    setSubscription(false);
+    setDescription("");
+    setDate("");
+    setImgLink("");
+    setType(undefined);
+    setPublisher(undefined);
   }
 
   return (
     <main>
-      <label className={styles.label} htmlFor="link">
-        Link til side:
-      </label>
-      <input
-        id="link"
-        name="link"
-        type="link"
-        placeholder="www.ett-eller-annet.no"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        className={styles.input}
-        required
-      />
+      <h1>Admin</h1>
+      <section className={styles.section}>
+        <article className={styles.link_article}>
+          <label className={styles.label} htmlFor="link">
+            Link til side:
+          </label>
 
-              <PublisherDropdown onChange={setPublisher} value={publisher}/>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <input
+              id="link"
+              name="link"
+              type="url"
+              placeholder="www.ett-eller-annet.no"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              onPaste={(e) => {
+                const pastedUrl = e.clipboardData.getData("text");
+                setUrl(pastedUrl);
+              }}
+              className={styles.input}
+              required
+            />
+          )}
 
-         <select
+          {isError ? (
+            <ErrorBox message={"Kunne ikke hente data fra denne linken"} />
+          ) : (
+            ""
+          )}
+        </article>
+
+        <article className={styles.pulldown_article}>
+          <PublisherDropdown onChange={setPublisher} value={publisher} />
+
+          <select
             className={styles.select}
+            required
             onChange={(e) =>
               setType(
                 e.target.value === ""
@@ -69,10 +120,21 @@ function AdminPage() {
               </option>
             ))}
           </select>
-          <span className={styles.chevron}>
-            <ChevronDown />
-          </span>
-    
+
+          <div className={styles.checkbox_container}>
+            <input
+              id="subscribe"
+              name="subscribe"
+              checked={subscription}
+              type="checkbox"
+              onChange={(e) => setSubscription(e.target.checked)}
+              className={styles.input}
+              required
+            />
+            <label htmlFor="subscribe"> Subscription needed</label>
+          </div>
+        </article>
+      </section>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
         <label className={styles.label} htmlFor="tittel">
@@ -81,16 +143,16 @@ function AdminPage() {
         <input
           id="tittel"
           name="tittel"
-          type="input"
+          type="text"
           placeholder="tittel"
           value={title}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           className={styles.input}
           required
         />
 
         <label className={styles.label} htmlFor="date">
-          Dato
+          Dato:
         </label>
         <input
           id="date"
@@ -99,6 +161,7 @@ function AdminPage() {
           value={date}
           onChange={(e) => setDate(e.target.value)}
           className={styles.input}
+          required
         />
 
         <label className={styles.label} htmlFor="image">
@@ -107,28 +170,34 @@ function AdminPage() {
         <input
           id="image"
           name="image"
-          type="input"
+          type="text"
           placeholder="bilde"
           value={imgLink}
-          onChange={(e) => setUrl(e.target.value)}
+          onChange={(e) => setImgLink(e.target.value)}
           className={styles.input}
           required
         />
 
         <label className={styles.label} htmlFor="content">
-          Artikkel beskrivelse
+          Artikkel beskrivelse:
         </label>
         <textarea
           id="content"
           name="content"
           rows={6}
           placeholder="Intro til denne artikkelen"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className={styles.textarea}
           required
         />
+
+        <button type="submit" className={styles.button}>
+          Legg til artikel
+        </button>
       </form>
+
+      <ArticlesList />
     </main>
   );
 }
