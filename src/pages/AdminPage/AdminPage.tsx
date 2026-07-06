@@ -7,6 +7,7 @@ import ArticlesList from "./components/ArticlesList/ArticlesList";
 import { createArticle } from "../../api/supabase/articles";
 import Loader from "../../components/Loader/Loader";
 import ErrorBox from "../../components/ErrorBox/ErrorBox";
+import SuccessBox from "./components/SuccessBox/SuccessBox";
 
 function formatDate(date: string) {
   return date?.split("T")[0] ?? "";
@@ -23,6 +24,10 @@ function AdminPage() {
   const [type, setType] = useState<ArticleType | undefined>();
   const [publisher, setPublisher] = useState<string>();
 
+  // User feedback
+  const [formError, setFormError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   // Metadata
   const { data, isError, isLoading } = useFetchMetadata(url);
 
@@ -38,6 +43,16 @@ function AdminPage() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    setFormError("");
+    setSuccessMessage("");
+
+    const validationError = validateForm();
+    if (validationError) {
+      setFormError(validationError);
+      return;
+    }
+
     const response = await createArticle({
       title,
       date,
@@ -48,7 +63,12 @@ function AdminPage() {
       description,
     });
 
-    console.log("TODO: set check for ", response);
+    if (response?.error) {
+      setFormError("Kunne ikke lagre artikkelen.");
+      return;
+    }
+
+    setSuccessMessage("Artikkelen ble lagt til.");
     resetFields();
   }
 
@@ -61,6 +81,18 @@ function AdminPage() {
     setImgLink("");
     setType(undefined);
     setPublisher(undefined);
+  }
+
+  function validateForm() {
+    if (!url.trim()) return "Link må fylles ut.";
+    if (!publisher) return "Velg en publisher.";
+    if (!type) return "Velg en artikkeltype.";
+    if (!title.trim()) return "Tittel må fylles ut.";
+    if (!date) return "Dato må fylles ut.";
+    if (!imgLink.trim()) return "Image link må fylles ut.";
+    if (!description.trim()) return "Artikkelbeskrivelse må fylles ut.";
+
+    return "";
   }
 
   return (
@@ -104,6 +136,7 @@ function AdminPage() {
           <select
             className={styles.select}
             required
+            value={type ?? ""}
             onChange={(e) =>
               setType(
                 e.target.value === ""
@@ -191,6 +224,10 @@ function AdminPage() {
           className={styles.textarea}
           required
         />
+
+        {formError && <ErrorBox message={formError} />}
+
+        {successMessage && <SuccessBox message={successMessage} />}
 
         <button type="submit" className={styles.button}>
           Legg til artikel
