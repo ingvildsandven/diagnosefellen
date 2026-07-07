@@ -8,7 +8,6 @@ const formatDate = (date: string) => {
 };
 
 function FeedPost({ post }: { post: ArticleWithRelations }) {
-  console.log(post);
 
   return (
     <a href={post.link} target="_blank" className={style.link}>

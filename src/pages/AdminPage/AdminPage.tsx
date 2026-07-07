@@ -30,7 +30,6 @@ function AdminPage() {
 
   // Metadata
   const { data, isError, isLoading } = useFetchMetadata(url);
-  console.log(data)
 
   useEffect(() => {
     if (!data) return;

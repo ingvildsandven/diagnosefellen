@@ -62,7 +62,6 @@ export async function createArticle(article: {
   publisher_id?: string;
 }) {
   const { imgLink, publisher_id, ...articleData } = article;
-  console.log(article);
 
   const { data, error } = await supabase
     .from("articles")
