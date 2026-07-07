@@ -44,9 +44,6 @@ serve(async (req: Request) => {
 
     const data = await res.json();
 
-    console.log("Resend status:", res.status);
-    console.log("Resend response:", JSON.stringify(data));
-
     return new Response(JSON.stringify(data), {
       status: res.status,
       headers: { ...corsHeaders, "Content-Type": "application/json" },

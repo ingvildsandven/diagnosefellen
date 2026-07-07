@@ -60,21 +60,18 @@ export default function BookingForm({ onSubmit }: BookingFormProps) {
       createdAt: new Date().toISOString(),
     };
 
-    console.log(payload)
-
     try {
       setStatus({ type: "loading", message: "Sender inn..." });
 
       if (typeof onSubmit === "function") {
         await onSubmit(payload);
       } else {
-        // Replace this with your API call.
         await new Promise((r) => setTimeout(r, 450));
       }
 
       setStatus({
         type: "success",
-        message: "Takk! Din forespørsel har blitt sendt.",
+        message: "Takk! Din forespørsel har blitt sendt.Du får svar på mail",
       });
       setEmail("");
       setEventType(EVENT_TYPES[0].value);

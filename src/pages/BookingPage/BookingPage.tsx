@@ -6,6 +6,7 @@ import supabase from "../../api/supabase/client";
 import type { BookingPayload } from "../../types/booking.types";
 
 function BookingPage() {
+
   return (
     <main className={style.main}>
       <section className={style.header}>

@@ -1,0 +1,116 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Trigger button — matches "Alle typer" style ── */
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px;
+  background: #fff;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+  white-space: nowrap;
+  min-width: 160px;
+  height: 100%;
+  transition: border-color 0.15s;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: #9ca3af;
+}
+
+.trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.triggerLabel {
+  flex: 1;
+  text-align: left;
+  font-family: montserrat;
+  font-weight: 400;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown menu ── */
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 6px 0;
+  margin: 0;
+  list-style: none;
+  z-index: 100;
+  
+}
+
+/* ── Individual option ── */
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.option:hover {
+  background: #f3f4f6;
+}
+
+.optionSelected {
+  background: #f0f0f0;
+}
+
+/* ── Logo slot — fixed size so logos align ── */
+.logoSlot {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Placeholder square for "all" option */
+.allIcon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #e5e7eb;
+}
+
+.optionLabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+}

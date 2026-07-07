@@ -1,0 +1,49 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: inherit;
+}
+
+.spinner {
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #e2e2e2;
+  border-top-color: #6366f1;
+  animation: spin 0.7s linear infinite;
+}
+
+.small {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+.medium {
+  width: 28px;
+  height: 28px;
+  border-width: 3px;
+}
+
+.large {
+  width: 44px;
+  height: 44px;
+  border-width: 4px;
+}
+
+.label {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.4s;
+  }
+}

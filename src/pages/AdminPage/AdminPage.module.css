@@ -1,0 +1,78 @@
+
+.section,
+.form,
+.link_article,
+.pulldown_article,
+.checkbox_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.section,
+.form,
+.link_article {
+  width: 100%;
+  flex-direction: column;
+}
+
+.pulldown_article {
+  width: 90%;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkbox_container {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.checkbox_container .input {
+  width: 15px;
+  height: 15px;
+  border: #fff;
+}
+
+.input,
+.select {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: #fff;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.input {
+  width: 90%;
+}
+
+.textarea {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: #fff;
+  resize: vertical;
+  width: 90%;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button {
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  background: var(--main-color);
+  color: #fff;
+  width: 200px;
+  border-radius: 15px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
+  box-shadow: 0 10px 20px rgba(225, 29, 72, 0.18);
+}

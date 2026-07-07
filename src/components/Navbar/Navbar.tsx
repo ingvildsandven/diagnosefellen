@@ -18,12 +18,12 @@ function Navbar() {
             </li>
             <li>
               <Link to="/about/" className={styles.navLink}>
-                Om meg
+                Om Henriette
               </Link>
             </li>
              <li>
               <Link to="/posts/" className={styles.navLink}>
-                Aktivitet
+                Medieoppslag
               </Link>
             </li>
             <li>
@@ -92,7 +92,7 @@ function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={styles.sidebarLink}
               >
-                Om meg
+                Om Henriette
               </Link>
             </li>
             <li>
@@ -101,7 +101,7 @@ function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className={styles.sidebarLink}
               >
-                Aktivitet
+                Medieoppslag
               </Link>
             </li>
             <li>

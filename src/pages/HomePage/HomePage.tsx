@@ -33,17 +33,6 @@ function HomePage() {
     },
   ];
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data: posts, error } = await supabase.from("posts").select("*");
-        console.log(posts, error);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    })();
-  }, []);
-
   return (
     <main>
       <section className={style.intro_section}>
