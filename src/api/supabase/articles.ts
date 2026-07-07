@@ -78,7 +78,7 @@ export async function createArticle(article: {
   if (imgLink) {
     const { error: imageError } = await supabase.from("article_images").insert({
       article_id: data.id,
-      url: imgLink,
+      image: imgLink,
     });
 
     if (imageError) throw imageError;

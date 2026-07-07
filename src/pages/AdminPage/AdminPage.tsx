@@ -30,6 +30,7 @@ function AdminPage() {
 
   // Metadata
   const { data, isError, isLoading } = useFetchMetadata(url);
+  console.log(data)
 
   useEffect(() => {
     if (!data) return;
@@ -61,6 +62,7 @@ function AdminPage() {
       subscription,
       publisher_id: publisher,
       description,
+      imgLink,
     });
 
     if (response?.error) {
@@ -89,7 +91,6 @@ function AdminPage() {
     if (!type) return "Velg en artikkeltype.";
     if (!title.trim()) return "Tittel må fylles ut.";
     if (!date) return "Dato må fylles ut.";
-    if (!imgLink.trim()) return "Image link må fylles ut.";
     if (!description.trim()) return "Artikkelbeskrivelse må fylles ut.";
 
     return "";
@@ -208,7 +209,6 @@ function AdminPage() {
           value={imgLink}
           onChange={(e) => setImgLink(e.target.value)}
           className={styles.input}
-          required
         />
 
         <label className={styles.label} htmlFor="content">

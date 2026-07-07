@@ -16,7 +16,7 @@ function FeedPost({ post }: { post: ArticleWithRelations }) {
         {post.images.length ? (
           <img
             src={post.images[0].image}
-            alt={post.images[0].alt ? post.images[0].alt : "Cover image"}
+            alt={post.images[0].alt ? post.images[0].alt : ""}
             className={style.image}
           />
         ):("")}

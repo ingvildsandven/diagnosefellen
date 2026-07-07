@@ -25,7 +25,7 @@ function PostPage() {
 
   return (
     <main>
-      <h1>Aktivitetslogg</h1>
+      <h1>Henriette i Media</h1>
 
       <SortingContainer
         filterType={filterType}

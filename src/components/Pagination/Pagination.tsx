@@ -12,7 +12,7 @@ interface PaginationProps {
   pageSizeOptions?: number[];
 }
 
-const DEFAULT_PAGE_SIZE_OPTIONS = [1, 2, 20, 50, 100];
+const DEFAULT_PAGE_SIZE_OPTIONS = [5, 10, 20, 50, 100];
 
 // Builds a compact page list like: 1, 2, 3, …, 8, 9
 function getPageRange(
