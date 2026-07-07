@@ -5,6 +5,8 @@ import { useState } from "react";
 import type { ArticleType } from "../../types/post.types";
 import SortingContainer from "./components/SortingContainer";
 import Pagination from "../../components/Pagination/Pagination";
+import ErrorBox from "../../components/ErrorBox/ErrorBox";
+import Loader from "../../components/Loader/Loader";
 
 function PostPage() {
   const [page, setPage] = useState<number>(1);
@@ -21,11 +23,10 @@ function PostPage() {
     publisherId: filterPublisher,
     sort: sort,
   });
-  console.log(data, isLoading, isError);
 
   return (
     <main>
-      <h1>Aktivitetslogg</h1>
+      <h1>Henriette i Media</h1>
 
       <SortingContainer
         filterType={filterType}
@@ -39,6 +40,10 @@ function PostPage() {
       />
 
       <section className={style.article_container}>
+        {isError ? <ErrorBox message={"Kunne ikke hente mediepost. Prøv å laste inn siden på nytt"} /> : ""}
+
+        {isLoading ? <Loader size="large" /> : ""}
+
         {data?.articles.map((article) => (
           <FeedPost key={article.id} post={article} />
         ))}

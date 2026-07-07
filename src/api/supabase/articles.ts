@@ -1,11 +1,8 @@
-
-import type { FetchArticlesOptions } from "../../types/post.types";
+import type { ArticleType, FetchArticlesOptions } from "../../types/post.types";
 import supabase from "./client";
 
 export async function getAllArticles() {
-  const { data, error } = await supabase
-    .from("articles")
-    .select("*");
+  const { data, error } = await supabase.from("articles").select("*");
 
   if (error) throw error;
 
@@ -19,17 +16,15 @@ export async function getArticles(options: FetchArticlesOptions = {}) {
   const from = (page - 1) * pageSize;
   const to = from + pageSize - 1;
 
-  let query = supabase
-    .from("articles")
-    .select(
-      `
+  let query = supabase.from("articles").select(
+    `
       *,
       publisher:publishers (*),
       images:article_images (*),
       journalists:article_journalists (*)
     `,
-      { count: "exact" }
-    );
+    { count: "exact" },
+  );
 
   if (options.type) {
     query = query.eq("type", options.type);
@@ -54,4 +49,39 @@ export async function getArticles(options: FetchArticlesOptions = {}) {
     pageSize,
     totalPages: Math.ceil((count ?? 0) / pageSize),
   };
+}
+
+export async function createArticle(article: {
+  link: string;
+  title: string;
+  description: string;
+  date: string;
+  subscription: boolean;
+  type?: ArticleType;
+  imgLink?: string;
+  publisher_id?: string;
+}) {
+  const { imgLink, publisher_id, ...articleData } = article;
+
+  const { data, error } = await supabase
+    .from("articles")
+    .insert({
+      ...articleData,
+      publisher_id,
+    })
+    .select("*")
+    .single();
+
+  if (error) throw error;
+
+  if (imgLink) {
+    const { error: imageError } = await supabase.from("article_images").insert({
+      article_id: data.id,
+      image: imgLink,
+    });
+
+    if (imageError) throw imageError;
+  }
+
+  return data;
 }

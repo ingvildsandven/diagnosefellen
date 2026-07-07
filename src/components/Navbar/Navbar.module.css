@@ -31,7 +31,7 @@ body {
 
 .navLink {
   color: var(--muted-font-color);
-  font-weight: 500;
+  font-weight: 450;
   text-decoration: none;
   padding: 5px;
   transition: color 0.2s ease;

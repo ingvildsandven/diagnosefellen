@@ -2,6 +2,8 @@ export const ARTICLE_TYPES = [
   "Kronikk",
   "Artikkel",
   "Anmeldelse",
+  "Intervju",
+  "Podcast"
 ] as const;
 
 export type ArticleType = (typeof ARTICLE_TYPES)[number];

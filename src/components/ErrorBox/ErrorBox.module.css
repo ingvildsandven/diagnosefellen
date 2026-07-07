@@ -1,0 +1,58 @@
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-family: inherit;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: #dc2626;
+  margin-top: 1px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 2px 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #991b1b;
+  text-transform: uppercase;
+}
+
+.message {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #7f1d1d;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box {
+    animation: none;
+  }
+}

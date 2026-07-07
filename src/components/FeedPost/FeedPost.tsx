@@ -8,18 +8,17 @@ const formatDate = (date: string) => {
 };
 
 function FeedPost({ post }: { post: ArticleWithRelations }) {
+
   return (
     <a href={post.link} target="_blank" className={style.link}>
       <article className={style.article}>
-        {post.images[0].image ? (
+        {post.images.length ? (
           <img
             src={post.images[0].image}
-            alt={post.images[0].alt}
+            alt={post.images[0].alt ? post.images[0].alt : ""}
             className={style.image}
           />
-        ) : (
-          ""
-        )}
+        ):("")}
 
         <p className={style.date}>{formatDate(post.date)}</p>
         <p className={style.type}>{post.type}</p>
@@ -34,14 +33,14 @@ function FeedPost({ post }: { post: ArticleWithRelations }) {
           ""
         )}
 
-        <div className={style.content_container}>
-          {post.images[0].image ? (
+        { <div className={style.content_container}>
+          {post.images.length ? (
             <h2>{post.title}</h2>
           ) : (
             <h2 className={style.padding_side}>{post.title}</h2>
           )}
           <p>{post.description}..</p>
-        </div>
+        </div>}
       </article>
       <div className={style.continue_container}>
         <p>Fortsett å lese</p>
