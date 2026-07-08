@@ -8,6 +8,7 @@ import { createArticle } from "../../api/supabase/articles";
 import Loader from "../../components/Loader/Loader";
 import ErrorBox from "../../components/ErrorBox/ErrorBox";
 import SuccessBox from "./components/SuccessBox/SuccessBox";
+import LogoutButton from "../AdminLoginPage/LogoutButton";
 
 function formatDate(date: string) {
   return date?.split("T")[0] ?? "";
@@ -97,6 +98,7 @@ function AdminPage() {
 
   return (
     <main>
+      <LogoutButton />
       <h1>Admin</h1>
       <section className={styles.section}>
         <article className={styles.link_article}>
