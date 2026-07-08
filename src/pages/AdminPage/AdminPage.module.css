@@ -55,6 +55,7 @@
   padding: 12px 14px;
   background: #fff;
   resize: vertical;
+  font-size: small;
   width: 90%;
   font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
 }

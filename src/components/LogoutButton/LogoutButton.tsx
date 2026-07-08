@@ -1,5 +1,6 @@
 import supabase from "../../api/supabase/client";
 import { useNavigate } from "react-router";
+import style from "./LogoutButton.module.css";
 
 export default function LogoutButton() {
   const navigate = useNavigate();
@@ -9,5 +10,11 @@ export default function LogoutButton() {
     navigate("/admin-login");
   }
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <div className={style.container}>
+      <button className={style.button} onClick={handleLogout}>
+        Logout
+      </button>
+    </div>
+  );
 }

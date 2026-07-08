@@ -8,7 +8,7 @@ import { createArticle } from "../../api/supabase/articles";
 import Loader from "../../components/Loader/Loader";
 import ErrorBox from "../../components/ErrorBox/ErrorBox";
 import SuccessBox from "./components/SuccessBox/SuccessBox";
-import LogoutButton from "../AdminLoginPage/LogoutButton";
+import LogoutButton from "../../components/LogoutButton/LogoutButton";
 
 function formatDate(date: string) {
   return date?.split("T")[0] ?? "";
