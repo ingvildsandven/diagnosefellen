@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/24d78c86-687a-4d2c-98aa-fdcb10288ee1/deploy-status)](https://app.netlify.com/projects/diagnosefellen/deploys)
+
 # Diagnosefellen
 
 A website for **Henriette Sandven** and her book *Diagnosefellen*. The site collects and organizes relevant content—podcasts, lectures, interviews, articles, and other appearances—so it’s easy to find, share, and keep updated. It also includes a booking form to contact Henriette by email for events.
