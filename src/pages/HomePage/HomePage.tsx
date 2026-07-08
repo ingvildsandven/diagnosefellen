@@ -52,7 +52,7 @@ function HomePage() {
       </section>
 
       <section className={style.diagnose_section}>
-        <h2>Hva er diagnosefellen?</h2>
+        <h2>Hva er Diagnosefellen?</h2>
         <p>
           En diagnosefelle er et fenomen hvor en diagnose kan gi utilsiktede
           konsekvenser. Dette er spesielt uheldig når det gjelder barn. Barn har

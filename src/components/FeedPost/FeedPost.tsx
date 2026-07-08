@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import type { ArticleWithRelations } from "../../types/post.types";
 import PublisherLogo from "../PublisherLogo/PublisherLogo";
 import style from "./FeedPost.module.css";
@@ -8,7 +9,6 @@ const formatDate = (date: string) => {
 };
 
 function FeedPost({ post }: { post: ArticleWithRelations }) {
-
   return (
     <a href={post.link} target="_blank" className={style.link}>
       <article className={style.article}>
@@ -18,10 +18,9 @@ function FeedPost({ post }: { post: ArticleWithRelations }) {
             alt={post.images[0].alt ? post.images[0].alt : ""}
             className={style.image}
           />
-        ):("")}
-
-        <p className={style.date}>{formatDate(post.date)}</p>
-        <p className={style.type}>{post.type}</p>
+        ) : (
+          ""
+        )}
 
         {post.publisher ? (
           <PublisherLogo
@@ -33,19 +32,33 @@ function FeedPost({ post }: { post: ArticleWithRelations }) {
           ""
         )}
 
-        { <div className={style.content_container}>
-          {post.images.length ? (
-            <h2>{post.title}</h2>
-          ) : (
-            <h2 className={style.padding_side}>{post.title}</h2>
-          )}
+        {/* post.images.length*/}
+        <div
+          className={`${style.date_type_container} ${
+            post.images.length ? "" : style.noImage
+          }`}
+        >
+          <p className={style.type}>{post.type}</p>
+          <p className={style.date}>{formatDate(post.date)}</p>
+        </div>
+
+        <div
+          className={`${post.images.length ? "" : style.noImages
+          } ${style.line_container}`}
+        >
+          <span className={style.line}></span>
+        </div>
+
+        <div className={style.content_container}>
+          <h2>{post.title}</h2>
           <p>{post.description}..</p>
-        </div>}
+        </div>
+
+        <div className={style.continue_container}>
+          <p>Fortsett å lese</p>
+          <ArrowUpRight color="white" className={style.icon} />
+        </div>
       </article>
-      <div className={style.continue_container}>
-        <p>Fortsett å lese</p>
-        <span className={style.arrow_icon}></span>
-      </div>
     </a>
   );
 }

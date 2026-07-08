@@ -26,7 +26,7 @@ function PostPage() {
 
   return (
     <main>
-      <h1>Henriette i Media</h1>
+      <h1>Medieoppslag</h1>
 
       <SortingContainer
         filterType={filterType}
@@ -39,11 +39,21 @@ function PostPage() {
         setSort={setSort}
       />
 
+      {isError ? (
+        <section  className={style.error_container}>
+          <ErrorBox
+            message={
+              "Kunne ikke hente mediepost. Prøv å laste inn siden på nytt"
+            }
+          />
+        </section>
+      ) : (
+        ""
+      )}
+
+      {isLoading ? <section  className={style.loader_container}><Loader size="large" /></section> : ""}
+
       <section className={style.article_container}>
-        {isError ? <ErrorBox message={"Kunne ikke hente mediepost. Prøv å laste inn siden på nytt"} /> : ""}
-
-        {isLoading ? <Loader size="large" /> : ""}
-
         {data?.articles.map((article) => (
           <FeedPost key={article.id} post={article} />
         ))}
