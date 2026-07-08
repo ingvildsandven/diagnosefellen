@@ -83,6 +83,7 @@
   border-radius: var(--radius);
   padding: 12px 14px;
   background: #fff;
+  font-size: small;
   resize: vertical;
   width: calc(100% - 30px);
   font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;

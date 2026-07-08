@@ -1,6 +1,10 @@
 .link {
   text-decoration: none;
   height: fit-content;
+  break-inside: avoid;
+  page-break-inside: avoid;
+  width: 100%;
+  display: inline-block;
 }
 
 .article * {
@@ -9,11 +13,12 @@
 }
 
 .article {
+  break-inside: avoid;
+  display: block;
+  overflow: hidden;
   margin-top: 20px;
   border: 1px solid var(--line);
-  border-radius: 15px 15px 3px 3px;
-  width: calc(90vw - 30px);
-  max-width: 800px;
+  border-radius: 15px;
   position: relative;
   transition: transform 0.2s ease-in;
   background-color: var(--background-color);
@@ -29,42 +34,61 @@
   border-radius: 10px 10px 0px 0px;
 }
 
-.type,
-.date {
-  position: absolute;
-  top: -20px;
+.date_type_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 10px;
 }
 
-.date {
-  right: 25px;
-}
-
+.date,
 .type {
-  left: 25px;
+  margin: 5px 5px;
+}
+
+.noImage{
+  margin-top: 15px;
+  margin-left: 55px;
+}
+
+.noImages{
+  margin-left: 55px;
 }
 
 .article h2 {
+  padding-top: 5px;
+  margin-inline: 5px;
+}
+
+.line_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding-top: 10px;
+  height: 10px;
 }
 
-.article h2,
-.article p {
-  margin-bottom: 15px;
+.line {
+  border-bottom: var(--main-color) 2px solid;
+  display: block;
+  height: 10px;
+  width: 65%;
 }
 
-.padding_side {
-  padding: 20px 5px 0px 60px !important; 
+.content_container p {
+  margin-top: 7px;
 }
 
 .continue_container {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   background-color: var(--main-color);
   padding-block: 10px;
-  padding-top: 20px;
+  padding-top: 15px;
   left: 0px;
-  bottom: -5px;
   border-radius: 0px 0px 10px 10px;
-  transform: translateY(-48px);
+  transform: translateY(10px);
   transition: transform 0.2s ease-in;
   position: relative;
   z-index: -1;
@@ -72,13 +96,16 @@
 }
 
 .link:hover .continue_container {
-  transform: translateY(-30px);
+  transform: translateY(0px);
 }
 
-.continue_container p {
+.continue_container p,
+.icon {
   margin: 0px 15px;
   color: var(--background-color);
+  transition: transform 0.2s ease-in;
 }
 
-@media screen and (min-width: 600px) {
+.continue_container:hover .icon {
+  transform: scale(1.3);
 }

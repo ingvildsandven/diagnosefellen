@@ -7,11 +7,13 @@ import Navbar from "./components/Navbar/Navbar";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import PostPage from "./pages/PostPage/PostPage";
 import Footer from "./components/Footer/Footer";
+import AdminLoginPage from "./pages/AdminLoginPage/AdminLoginPage";
+import ProtectedAdminRoute from "./pages/AdminLoginPage/ProtectedAdminRoute";
 
 function Layout() {
   return (
     <>
-      <Navbar /> <Outlet /> <Footer/>
+      <Navbar /> <Outlet /> <Footer />
     </>
   );
 }
@@ -23,8 +25,13 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="/about/" element={<AboutPage />} />
         <Route path="/posts/" element={<PostPage />} />
-        <Route path="/admin/" element={<AdminPage />} />
         <Route path="/booking/" element={<BookingPage />} />
+        
+        <Route path="/admin-login" element={<AdminLoginPage />} />
+
+        <Route element={<ProtectedAdminRoute />}>
+          <Route path="/admin" element={<AdminPage />} />
+        </Route>
       </Route>
     </Routes>
   );

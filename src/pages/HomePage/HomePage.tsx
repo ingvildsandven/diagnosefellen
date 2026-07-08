@@ -52,20 +52,20 @@ function HomePage() {
       </section>
 
       <section className={style.diagnose_section}>
-        <h2>Hva er diagnosefellen?</h2>
+        <h2>Hva er Diagnosefellen?</h2>
         <p>
           En diagnosefelle er et fenomen hvor en diagnose kan gi utilsiktede
           konsekvenser. Dette er spesielt uheldig når det gjelder barn. Barn har
           ofte ikke selv et språk for hva de strever med, og ber sjelden selv om
-          utredninger- til tross for at det er de som skal leve med
+          utredninger - til tross for at det er de som skal leve med
           konsekvensene av å ha en diagnose. En diagnose kan bli en felle dersom
-          den settes på feil eller tynt grunnlag- eller den fører til at barnet
+          den settes på feil eller tynt grunnlag - eller den fører til at barnet
           inntar en uheldig sykerolle som i verste fall fører til en dårligere
           prognose.
         </p>
 
         <p>
-          I 2025 ga Henriette Kirkaune Sandven ut boka Diagnosefellen- om
+          I 2025 ga Henriette Kirkaune Sandven ut boka Diagnosefellen om
           sykeliggjøringen av norske barn.
         </p>
       </section>
@@ -75,14 +75,14 @@ function HomePage() {
           <h2>Om boka</h2>
           <p>
             Diagnosefellen- om sykeliggjøringen av norske barn tar for seg den
-            enorme økninger av henvisninger til barne- og ungdomspsykiatrien de
+            enorme økninger av henvisninger til barne - og ungdomspsykiatrien de
             siste årene og hvordan dette har resultert i en stor økning i påvist
             psykisk sykdom gjennom en psykiatrisk diagnose. Boka retter et
             kritisk blikk på samfunnet, og reflekterer over forhold i samfunnet
             som er med på å påvirke denne utviklingen. Den stiller spørsmål ved
             hvorvidt vi over- og feildiagnostiserer barn, men også om vi har
             fått et samfunn hvor stadig flere barn har det vanskelig. Hensikten
-            med boka er å påpeke at det er behov for system- og politiske
+            med boka er å påpeke at det er behov for system - og politiske
             endringer til det beste for alle barn som vokser opp i Norge.
           </p>
 
