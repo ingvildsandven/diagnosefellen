@@ -26,7 +26,7 @@ function AboutPage() {
           <p>
             Henriette Sandven er forfatter, foredragsholder og en engasjert
             stemme i debatten om barns helse i Norge. Med sin bok
-            "diagnosefellen" har hun satt søkelyset på den økende medisineringen
+            "Diagnosefellen" har hun satt søkelyset på den økende medisineringen
             av barn og behovet for kritisk refleksjon rundt diagnoser og
             behandlingsmetoder.
           </p>{" "}

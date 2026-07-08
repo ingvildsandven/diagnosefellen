@@ -1,0 +1,52 @@
+.login_page {
+}
+
+.email_container,
+.pwd_container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.email_container input,
+.pwd_container input {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: #fff;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button {
+  border: 1px solid rgba(225, 29, 72, 0.35);
+  background: var(--main-color);
+  margin: 20px;
+  color: #fff;
+  width: 200px;
+  border-radius: 15px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: montserrat, Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    filter 120ms ease;
+  box-shadow: 0 10px 20px rgba(225, 29, 72, 0.18);
+}
+
+.button:hover {
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0px);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
