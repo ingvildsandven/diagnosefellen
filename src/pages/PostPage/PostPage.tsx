@@ -11,7 +11,7 @@ import Loader from "../../components/Loader/Loader";
 function PostPage() {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(20);
-  const [search, setSearch] = useState<string>("");
+ // const [search, setSearch] = useState<string>("");
   const [filterType, setFilterType] = useState<ArticleType | undefined>();
   const [filterPublisher, setFilterPublisher] = useState<string>(); // TODO: publisher id is not known here...
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
@@ -34,8 +34,6 @@ function PostPage() {
         filterPublisher={filterPublisher}
         setFilterPublisher={setFilterPublisher}
         sort={sort}
-        setSearch={setSearch}
-        search={search}
         setSort={setSort}
       />
 
