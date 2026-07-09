@@ -95,7 +95,7 @@ function HomePage() {
 
         <div className={style.image_container}>
           <img
-            src="./book/14.png"
+            src="https://i.postimg.cc/L8zBZMgd/book.webp"
             alt="Bildet viser forsiden til boken 'diagnosefellen'"
           />
         </div>

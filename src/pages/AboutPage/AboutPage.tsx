@@ -12,14 +12,16 @@ function AboutPage() {
   // ];
 
   return (
-    <main>
+    <main className={style.main}>
       <h1>Om Henriette Kirkaune Sandven</h1>
       <section className={style.about_section}>
-        <article>
-          <img
-            src="https://i.postimg.cc/5N4S6gjs/Leikny-Havik-Normal.webp"
-            className={style.image}
-          />
+        <article className={style.image_article}>
+          <div>
+            <img
+              src="https://i.postimg.cc/5N4S6gjs/Leikny-Havik-Normal.webp"
+              className={style.image}
+            />
+          </div>
         </article>
 
         <article className={style.paragraph_article}>
@@ -43,7 +45,6 @@ function AboutPage() {
           </p>
         </article>
       </section>
-
       {/*
 <section className={style.accordion_section}>
       <Accordion title="Ofte stilte spørsmål" items={faqs} /></section>*/}
