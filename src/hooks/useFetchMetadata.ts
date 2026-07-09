@@ -6,7 +6,7 @@ export function useFetchMetadata(
 : string) {
   const [data, setData] = useState<any>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isError, setIsError] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false)
 
   // This useffect runs whenever the arguments passed in changes (when we want to get someting else)
   useEffect(() => {

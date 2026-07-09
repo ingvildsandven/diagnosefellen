@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import supabase from "../../api/supabase/client";
 import style from "./HomePage.module.css";
 import { Link } from "react-router";
 import NavigationComponent from "./components/NavigationComponent";

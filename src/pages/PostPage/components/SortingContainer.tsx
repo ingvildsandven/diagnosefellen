@@ -13,9 +13,11 @@ interface SortingContainerProps {
   setFilterPublisher: (publisher: string | undefined) => void;
   sort: "newest" | "oldest";
   setSort: (sort: "newest" | "oldest") => void;
-  search: string;
-  setSearch: (type: string) => void;
 }
+
+// for search later:
+//search: string;
+//  setSearch: (type: string) => void;
 
 function SortingContainer({
   setFilterType,
@@ -23,8 +25,6 @@ function SortingContainer({
   setFilterPublisher,
   sort,
   setSort,
-  search,
-  setSearch,
 }: SortingContainerProps) {
   const toggleSort = () => setSort(sort === "newest" ? "oldest" : "newest");
 
