@@ -1,15 +1,15 @@
-import Accordion from "../../components/Accordian/Accordian";
+//import Accordion from "../../components/Accordian/Accordian";
 import style from "./AboutPage.module.css";
 
 function AboutPage() {
-  const faqs = [
-    { id: "1", question: "Hva er diagnosefellen?", answer: "..." },
-    {
-      id: "2",
-      question: "Hvem er målgruppen for boken?",
-      answer: "Boken henvender seg til...",
-    },
-  ];
+  // const faqs = [
+  //   { id: "1", question: "Hva er diagnosefellen?", answer: "..." },
+  //   {
+  //     id: "2",
+  //     question: "Hvem er målgruppen for boken?",
+  //     answer: "Boken henvender seg til...",
+  //   },
+  // ];
 
   return (
     <main>
@@ -17,7 +17,7 @@ function AboutPage() {
       <section className={style.about_section}>
         <article>
           <img
-            src="/public/images/LeiknyHavik-Normal.webp"
+            src="https://i.postimg.cc/5N4S6gjs/Leikny-Havik-Normal.webp"
             className={style.image}
           />
         </article>
@@ -44,8 +44,9 @@ function AboutPage() {
         </article>
       </section>
 
+      {/*
 <section className={style.accordion_section}>
-      <Accordion title="Ofte stilte spørsmål" items={faqs} /></section>
+      <Accordion title="Ofte stilte spørsmål" items={faqs} /></section>*/}
     </main>
   );
 }
