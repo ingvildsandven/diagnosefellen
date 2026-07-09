@@ -4,7 +4,7 @@ import { useFetchArticles } from "../../../../hooks/useFetchArticles";
 import style from "./ArticlesList.module.css";
 
 function ArticlesList() {
-  let { data, isError, isLoading } = useFetchArticles();
+  const { data, isError, isLoading } = useFetchArticles();
 
   if (isLoading) {
     return (

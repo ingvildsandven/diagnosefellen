@@ -1,15 +1,15 @@
-import Accordion from "../../components/Accordian/Accordian";
+//import Accordion from "../../components/Accordian/Accordian";
 import style from "./AboutPage.module.css";
 
 function AboutPage() {
-  const faqs = [
-    { id: "1", question: "Hva er diagnosefellen?", answer: "..." },
-    {
-      id: "2",
-      question: "Hvem er målgruppen for boken?",
-      answer: "Boken henvender seg til...",
-    },
-  ];
+  // const faqs = [
+  //   { id: "1", question: "Hva er diagnosefellen?", answer: "..." },
+  //   {
+  //     id: "2",
+  //     question: "Hvem er målgruppen for boken?",
+  //     answer: "Boken henvender seg til...",
+  //   },
+  // ];
 
   return (
     <main className={style.main}>

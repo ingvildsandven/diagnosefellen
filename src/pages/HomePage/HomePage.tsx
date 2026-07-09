@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import supabase from "../../api/supabase/client";
 import style from "./HomePage.module.css";
 import { Link } from "react-router";
 import NavigationComponent from "./components/NavigationComponent";
@@ -97,7 +95,7 @@ function HomePage() {
 
         <div className={style.image_container}>
           <img
-            src="./book/14.png"
+            src="https://i.postimg.cc/L8zBZMgd/book.webp"
             alt="Bildet viser forsiden til boken 'diagnosefellen'"
           />
         </div>

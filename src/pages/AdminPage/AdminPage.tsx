@@ -35,6 +35,8 @@ function AdminPage() {
   useEffect(() => {
     if (!data) return;
     if (data) {
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect
       if (data.title) setTitle(data.title);
       if (data.description) setDescription(data.description);
       if (data.image) setImgLink(data.image);
